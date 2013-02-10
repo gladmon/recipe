@@ -14,30 +14,18 @@
 ActiveRecord::Schema.define(:version => 20130210011953) do
 
   create_table "food_recipes", :force => true do |t|
-    t.string   "name",        :null => false
-    t.string   "description"
+    t.string   "name",            :null => false
+    t.text     "description"
     t.string   "tag_line"
     t.string   "prep_time"
     t.string   "servings"
-    t.integer  "added_by"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "ingredients", :force => true do |t|
-    t.integer  "food_recipe_id", :null => false
-    t.integer  "step_order",     :null => false
-    t.string   "name",           :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "steps", :force => true do |t|
-    t.integer  "food_recipe_id", :null => false
-    t.integer  "step_order",     :null => false
-    t.string   "name",           :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.text     "ingredients"
+    t.text     "steps"
+    t.integer  "added_by_id"
+    t.integer  "last_made_by_id"
+    t.datetime "last_made"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
