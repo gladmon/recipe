@@ -11,3 +11,49 @@
  *= require_self
  *= require_tree .
  */
+
+ h4 span {
+    color: #aaa;
+    font-style: italic;
+    font-size: .85em;
+    padding-left: 10px;
+	}
+  
+  .recent img {
+    max-height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .recent-added {
+    background-color: #fafafa;
+    padding: 10px;
+  }
+  
+  .welcome, .recent {
+    height: 330px;
+  }
+  
+  .welcome {
+    padding-top: 80px;
+  }
+  
+  .jcarousel {
+    position: relative;
+    overflow: hidden;
+    /* You need at least a height, adjust this to your needs */
+    height: 400px;
+}
+
+.jcarousel ul {
+    width: 20000em;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel li {
+    float: left;
+}

@@ -2,7 +2,16 @@ class FoodRecipesController < ApplicationController
   # GET /food_recipes
   # GET /food_recipes.json
   def index
-    @food_recipes = FoodRecipe.all
+    @food_recipes = FoodRecipe.select("food_recipes.id, food_recipes.name, tag_line, last_made, a_by.name as addedby, lm_by.name as lastmadeby").joins("left outer join users a_by on a_by.id=added_by_id left outer join users lm_by on lm_by.id=last_made_by_id")
+    
+    if params[:filter]
+      @food_recipes = @food_recipes.limit(5)
+      if params[:filter] = "recently_added"
+        @food_recipes = @food_recipes.order('food_recipes.updated_at')
+      elsif params[:filter] = "recently_made"
+        @food_recipes = @food_recipes.order('food_recipes.last_made_at')
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
