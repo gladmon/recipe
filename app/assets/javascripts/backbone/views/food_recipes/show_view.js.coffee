@@ -4,15 +4,19 @@ class Recipe.Views.FoodRecipesShowView extends Backbone.View
 
   template: JST["backbone/templates/food_recipes/show"]
 
-  initialize: ->
+  initialize: (options) ->
       @render()
-      @model.ingredients.forEach(@renderLi, @, '#ingredient_list')
-      @model.steps.forEach(@renderLi, @, '#step_list')
-
-  renderLi: (item, parentList) ->
+      @model.attributes.ingredients.forEach(@renderIngredientLi, @)
+      @model.attributes.steps.forEach(@renderStepLi, @, '#step_list')
+  
+  renderIngredientLi: (item, parentList) ->
       @view = new Recipe.Views.FoodRecipeIngredientView({name: item})
-      @$el.find(parentList).append @view.render().el
+      @$el.find('#ingredient_list').append @view.render().el
+      
+  renderStepLi: (item, parentList) ->
+      @view = new Recipe.Views.FoodRecipeIngredientView({name: item})
+      @$el.find('#step_list').append @view.render().el
 
   render: ->
-      @$el.html @template()
+      @$el.html(@template(@model))
       @
