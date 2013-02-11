@@ -1,16 +1,16 @@
 <div style="padding-top: 80px;" class="container">
   <div class="row">
     <div class="span5">
-      <h1 style="margin-bottom: 0px;"><%= name %></h1>
-      <p><%= tag_line %></p>
-      <p class="muted">added by <%= added_by_id %>, from <%= from %></p>
-      <p><img src="img/fakefood.jpg"></p>
-      <p><%= description %></p>
+      <h1 style="margin-bottom: 0px;"><%= attributes.name %></h1>
+      <p><%= attributes.tag_line %></p>
+      <p class="muted">added by <%= attributes.added_by_name %>, from %= from %</p>
+      <p><img src="assets/fakefood.jpg"></p>
+      <p><%= attributes.description %></p>
       <div id="comments">
         <div class="row">
           <hr>
           <div class="span1">
-            <img src="img/unknown.jpg" style="width: 50px;" />
+            <img src="assets/unknown.jpg" style="width: 50px;" />
           </div>
           <div class="span4">
             <p>Robbie</p>
@@ -18,19 +18,19 @@
           </div>
         </div>
         <div class="row">
-          <hr><div class="span1"><img src="img/unknown.jpg" style="width: 50px;" /></div><div class="span4"><p>Robbie</p><p>Dont forget the parm!</p></div>
+          <hr><div class="span1"><img src="assets/unknown.jpg" style="width: 50px;" /></div><div class="span4"><p>Robbie</p><p>Dont forget the parm!</p></div>
         </div>
         <div class="row">
-          <hr><div class="span1"><img src="img/unknown.jpg" style="width: 50px;" /></div><div class="span4"><p>His Friend</p><p>No I really do exist</p></div>
+          <hr><div class="span1"><img src="assets/unknown.jpg" style="width: 50px;" /></div><div class="span4"><p>His Friend</p><p>No I really do exist</p></div>
         </div>
       </div>
 		</div>
 		<div class="span7">
       <div class="container span7">
       
-      <h3>ingredients:</h3> 
+      <h3>ingredients</h3> 
       <ul id='ingredient_list'></ul>
-      <h3>directions:</h3> 
+      <h3>directions</h3> 
       <ol id='step_list'></ol>
         
       </div>

@@ -26,6 +26,13 @@
     margin-right: auto;
   }
   
+  img {
+    max-height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   .recent-added {
     background-color: #fafafa;
     padding: 10px;

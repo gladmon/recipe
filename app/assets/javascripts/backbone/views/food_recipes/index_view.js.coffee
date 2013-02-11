@@ -7,6 +7,9 @@ class Recipe.Views.FoodRecipesIndexView extends Backbone.View
   initialize: ->
       @render()
       @load_recents()
+      # TODO: not alert, but create notifaction
+      if @options.msg
+        alert(@options.msg)
 
   load_recents: ->
       @options.recently_made.forEach(@addRecentlyMade, @)
