@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap
+ *= require bootstrap-responsive
  *= require_tree .
  */
 
@@ -33,9 +35,13 @@
     margin-right: auto;
   }
   
-  .recent-added {
+  .footer, .recent-added {
     background-color: #fafafa;
     padding: 10px;
+  }
+  
+  .recent-added {
+    margin-left: -10px;
   }
   
   .welcome, .recent {

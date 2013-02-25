@@ -19,9 +19,11 @@ class Recipe.Views.FoodRecipesIndexView extends Backbone.View
       @view = new Recipe.Views.FoodRecipeRecentlyAddedView({model: model})
       @$el.find('#recently_added').append @view.render().el
       
-  addRecentlyMade: (model) ->
+  addRecentlyMade: (model, i) ->
       @view = new Recipe.Views.FoodRecipeRecentlyMadeView({model: model})
-      @$el.find('#recently_made').append @view.render().el
+      @div = jQuery(@view.render().el)
+      @div.addClass('active') if i == 0
+      @$el.find('#recently_made').append @div
 
   render: ->
       @$el.html @template()

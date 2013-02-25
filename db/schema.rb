@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130210011953) do
     t.string   "tag_line"
     t.string   "prep_time"
     t.string   "servings"
+    t.string   "recipe_from"
     t.text     "ingredients"
     t.text     "steps"
     t.integer  "added_by_id"
@@ -27,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20130210011953) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  add_index "food_recipes", ["name", "description", "tag_line", "recipe_from", "ingredients", "steps"], :name => "name"
 
   create_table "users", :force => true do |t|
     t.string   "name",       :null => false

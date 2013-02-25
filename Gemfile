@@ -6,6 +6,7 @@ gem "mysql2", "~> 0.3.11"
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'rails-backbone'
+gem 'libxml-ruby'
 
 # Gems used only for assets and not required
 # in production environments by default.

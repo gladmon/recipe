@@ -1,7 +1,7 @@
-class Recipe.Views.FoodRecipeRecentlyAddedView extends Backbone.View
-  template: JST["backbone/templates/food_recipes/recently_added"]
+class Recipe.Views.FoodRecipesSearchResultView extends Backbone.View
+  template: JST["backbone/templates/food_recipes/search_result"]
 
-  className: "span4"
+  
 #  events:
 #    "click .btn" : "view"
 

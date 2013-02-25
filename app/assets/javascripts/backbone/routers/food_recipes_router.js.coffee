@@ -12,6 +12,7 @@ class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
     ":id"         : "show"
     ":id/edit"    : "edit"
     ".*"          : "index"
+    "search/:term": "search"
 
   index: ->
     if @msg
@@ -30,7 +31,7 @@ class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
       @recipes.add(@recipe)
       that = this
       @model.fetch(
-        'success': -> @display()
+        'success': -> that.display()
         'error': -> console.log(that); that.msg = 404; that.navigate('#', {trigger: true}) 
       )
       console.log('waiting...')
@@ -40,3 +41,5 @@ class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
   display: () ->
     @view = new Recipe.Views.FoodRecipesShowView({'model':@model})
     
+  search: (term) ->
+    @view = new Recipe.Views.FoodRecipesSearchView({term:term})

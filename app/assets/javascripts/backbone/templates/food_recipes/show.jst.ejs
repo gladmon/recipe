@@ -3,7 +3,11 @@
     <div class="span5">
       <h1 style="margin-bottom: 0px;"><%= attributes.name %></h1>
       <p><%= attributes.tag_line %></p>
-      <p class="muted">added by <%= attributes.added_by_name %>, from %= from %</p>
+      <p class="muted">
+      <% if (attributes.added_by_name)  { %>
+      added by <%= attributes.added_by_name %>, 
+      <% } %>
+      from <%= attributes.from %></p>
       <p><img src="assets/fakefood.jpg"></p>
       <p><%= attributes.description %></p>
       <div id="comments">
