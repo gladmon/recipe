@@ -5,14 +5,14 @@
 #   gem 'sqlite3'
 development:
   adapter: mysql2
-  database: recipetest2
+  database: <%= ENV['RAILS_DB_NAME'] %>
   encoding: utf8
   pool: 5
   timeout: 5000
-  host: recipetest2.db.10241813.hostedresource.com
-  username: recipetest2
-  password: PassW0rd!
-  port: 3306
+  host: <%= ENV['RAILS_DB_HOST'] %>
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PWD'] %>
+  port: <%= ENV['RAILS_DB_PORT'] %>
 #  recipedev.db.10241813.hostedresource.com
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
