@@ -1,6 +1,6 @@
 class FoodRecipe < ActiveRecord::Base
 
-  require 'xml'
+  #require 'xml'
 
   fields = 'food_recipes.*, lm_by.name as last_made_by_name, a_by.name as added_by_name'
   joins = 'left outer join users lm_by on lm_by.id=last_made_by_id left outer join users a_by on a_by.id=added_by_id'
@@ -23,19 +23,19 @@ class FoodRecipe < ActiveRecord::Base
       .limit(10)
   end
   
-  def self.loadFromFile(filename)
-    doc = XML::Document.file(filename)
-    
-    doc.root.each_element do |e| 
-      r = FoodRecipe.find_or_create_by_name(e.find("Title").first.content)
-      r.recipe_from = e.find("FromName").first.content
-      r.servings = e.find("Serves").first.content
-      r.ingredients = convertToArray(e.find("Ingredients").first.content)
-      r.steps = convertToArray(e.find("Directions").first.content)
-      r.save
-    end
-    
-  end
+  #def self.loadFromFile(filename)
+  #  doc = XML::Document.file(filename)
+  #  
+  #  doc.root.each_element do |e| 
+  #    r = FoodRecipe.find_or_create_by_name(e.find("Title").first.content)
+  #    r.recipe_from = e.find("FromName").first.content
+  #    r.servings = e.find("Serves").first.content
+  #    r.ingredients = convertToArray(e.find("Ingredients").first.content)
+  #    r.steps = convertToArray(e.find("Directions").first.content)
+  #    r.save
+  #  end
+  #  
+  #end
   
   def self.convertToArray(string_value)
     string_value.lines.map {|x| x.strip }.reject { |x| x.blank? }

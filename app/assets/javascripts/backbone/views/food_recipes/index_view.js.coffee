@@ -3,6 +3,9 @@ class Recipe.Views.FoodRecipesIndexView extends Backbone.View
   el: '#recipes'
 
   template: JST["backbone/templates/food_recipes/index"]
+  
+  events:
+    "submit .navbar-form" : "search"
 
   initialize: ->
       @render()
@@ -25,6 +28,10 @@ class Recipe.Views.FoodRecipesIndexView extends Backbone.View
       @div.addClass('active') if i == 0
       @$el.find('#recently_made').append @div
 
+  search: ->
+    router.navigate('#search/' + jQuery(".navbar-form input[type=text]").val(), {trigger:true})
+    return false
+  
   render: ->
       @$el.html @template()
       @

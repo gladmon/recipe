@@ -1,6 +1,6 @@
 class Recipe.Views.FoodRecipesShowView extends Backbone.View
 
-  el: '#recipes'
+  el: '.main-content'
 
   template: JST["backbone/templates/food_recipes/show"]
 

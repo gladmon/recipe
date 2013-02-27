@@ -5,14 +5,17 @@ class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
     @recipes = new Recipe.Collections.FoodRecipesCollection
     @recipes.add(options.recently_made)
     @recipes.add(options.recently_added)
+    console.log("router init!")
+    @search_collection = new Recipe.Collections.FoodRecipesCollection
+    @search_collection.last_search = "NEVER!"
 
   routes:
     "index"       : "index"
+    "search/:term": "search"
     "new"         : "newRecipe"
     ":id"         : "show"
     ":id/edit"    : "edit"
     ".*"          : "index"
-    "search/:term": "search"
 
   index: ->
     if @msg
@@ -42,4 +45,5 @@ class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
     @view = new Recipe.Views.FoodRecipesShowView({'model':@model})
     
   search: (term) ->
-    @view = new Recipe.Views.FoodRecipesSearchView({term:term})
+    console.log("routing",@search_collection.length, @search_collection)
+    @view = new Recipe.Views.FoodRecipesSearchView({term:term, collection: @search_collection, recipes: @recipes})
