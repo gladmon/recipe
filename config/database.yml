@@ -24,7 +24,12 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: <%= ENV['RECIPE_DB_NAME'] %>
+  encoding: utf8
   pool: 5
   timeout: 5000
+  host: <%= ENV['RECIPE_DB_HOST'] %>
+  username: <%= ENV['RECIPE_DB_USER'] %>
+  password: <%= ENV['RECIPE_DB_PWD'] %>
+  port: <%= ENV['RECIPE_DB_PORT'] %>
