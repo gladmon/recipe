@@ -1,20 +1,21 @@
 class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
 
   initialize: (options) ->
-    @options = options
     @recipes = new Recipe.Collections.FoodRecipesCollection
-    @recipes.add(options.recently_made)
-    @recipes.add(options.recently_added)
+    @recipes.add(Recipe.recently_made) if (Recipe.recently_made)
+    @recipes.add(Recipe.recently_added) if (Recipe.recently_made)
     console.log("router init!")
     @search_collection = new Recipe.Collections.FoodRecipesCollection
-    @search_collection.last_search = "NEVER!"
+    @search_collection.last_search = ""
 
   routes:
     "index"       : "index"
+    "about"       : "about"
     "search/:term": "search"
-    "new"         : "newRecipe"
-    ":id"         : "show"
-    ":id/edit"    : "edit"
+    "search": "search"
+    "recipe/new"         : "newRecipe"
+    "recipe/:id"         : "show"
+    "recipe/:id/edit"    : "edit"
     ".*"          : "index"
 
   index: ->
@@ -22,10 +23,12 @@ class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
       @options.msg = @msg
     else
       @msg = null
-    @view = new Recipe.Views.FoodRecipesIndexView(@options)
+    Recipe.App.main.show new Recipe.Views.FoodRecipesIndexView(@options)
+    @setHeaderTab('homeTab')
 
   newRecipe: ->
-    @view = new Recipe.Views.FoodRecipesNewView({collection: @recipes})
+    Recipe.App.main.show new Recipe.Views.EditRecipe({collection: @recipes})
+    @setHeaderTab('newRecipeTab')
     
   show: (id) ->
     @model = @recipes.get(id)
@@ -42,8 +45,16 @@ class Recipe.Routers.FoodRecipesRouter extends Backbone.Router
       @display()
 
   display: () ->
-    @view = new Recipe.Views.FoodRecipesShowView({'model':@model})
+    Recipe.App.main.show new Recipe.Views.FoodRecipesShowView({'model':@model})
+    @setHeaderTab('editTab')
+    jQuery('.navbar-nav .editTab a').attr('href','#recipe/' + @model.id + '/edit');
+    jQuery('.navbar-nav .editTab').show();
     
   search: (term) ->
     console.log("routing",@search_collection.length, @search_collection)
-    @view = new Recipe.Views.FoodRecipesSearchView({term:term, collection: @search_collection, recipes: @recipes})
+    Recipe.App.main.show new Recipe.Views.FoodRecipesSearchView({term:term, collection: @search_collection, recipes: @recipes})
+    @setHeaderTab('searchTab')
+    
+  setHeaderTab: (className) ->
+    jQuery('.navbar-nav .active').removeClass('active')
+    jQuery('.navbar-nav .' + className).addClass('active')

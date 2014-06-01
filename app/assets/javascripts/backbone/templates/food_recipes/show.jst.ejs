@@ -1,43 +1,49 @@
-<div style="padding-top: 80px;" class="container">
+<div class="container">
   <div class="row">
-    <div class="span5">
-      <h1 style="margin-bottom: 0px;"><%= attributes.name %></h1>
-      <p><%= attributes.tag_line %></p>
+    <div class="col-md-5">
+      <div class="row">
+      <h1><%= name %></h1>
+      <p><%= tag_line %></p>
       <p class="muted">
-      <% if (attributes.added_by_name)  { %>
-      added by <%= attributes.added_by_name %>, 
+      <% if (typeof(added_by_name) != "undefined")  { %>
+      added by <%= added_by_name %>, 
       <% } %>
-      from <%= attributes.from %></p>
-      <p><img src="assets/fakefood.jpg"></p>
-      <p><%= attributes.description %></p>
-      <div id="comments">
+      <% if (typeof(from) != "undefined")  { %>
+      from <%= from %>
+      <% } %>
+      </p>
+      <p style="text-align: center;"><img style="max-width:400px" src="assets/fakefood.jpg"></p>
+      <% if (typeof(description) != "undefined")  { %>
+      <p><%= description %></p>
+      <% } %>
+      </div>
+      <div class="row" id="comments">
         <div class="row">
           <hr>
-          <div class="span1">
+          <div class="col-md-2">
             <img src="assets/unknown.jpg" style="width: 50px;" />
           </div>
-          <div class="span4">
+          <div class="col-md-10">
             <p>Robbie</p>
             <p>Mmmm went well!</p>
           </div>
         </div>
         <div class="row">
-          <hr><div class="span1"><img src="assets/unknown.jpg" style="width: 50px;" /></div><div class="span4"><p>Robbie</p><p>Dont forget the parm!</p></div>
+          <hr><div class="col-md-2"><img src="assets/unknown.jpg" style="width: 50px;" /></div><div class="col-md-10"><p>Robbie</p><p>Dont forget the parm!</p></div>
         </div>
         <div class="row">
-          <hr><div class="span1"><img src="assets/unknown.jpg" style="width: 50px;" /></div><div class="span4"><p>His Friend</p><p>No I really do exist</p></div>
+          <hr><div class="col-md-2"><img src="assets/unknown.jpg" style="width: 50px;" /></div><div class="col-md-10"><p>His Friend</p><p>No I really do exist</p></div>
         </div>
       </div>
 		</div>
-		<div class="span7">
-      <div class="container span7">
+		<div class="col-md-7">
       
       <h3>ingredients</h3> 
       <ul id='ingredient_list'></ul>
       <h3>directions</h3> 
       <ol id='step_list'></ol>
         
-      </div>
+
     </div>
   </div>
 </div>

@@ -22,6 +22,12 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
+  
+dev_local:
+  adapter: sqlite3
+  database: db/dev_local.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
   adapter: mysql2

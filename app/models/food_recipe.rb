@@ -4,8 +4,8 @@ class FoodRecipe < ActiveRecord::Base
 
   fields = 'food_recipes.*, lm_by.name as last_made_by_name, a_by.name as added_by_name'
   joins = 'left outer join users lm_by on lm_by.id=last_made_by_id left outer join users a_by on a_by.id=added_by_id'
-  serialize :ingredients
-  serialize :steps
+  serialize :ingredients, Array
+  serialize :steps, Array
   
   attr_accessible :name, :ingredients, :steps
   
@@ -39,5 +39,15 @@ class FoodRecipe < ActiveRecord::Base
   
   def self.convertToArray(string_value)
     string_value.lines.map {|x| x.strip }.reject { |x| x.blank? }
+  end
+  
+  def steps= (value)
+    value = FoodRecipe.convertToArray(value) if !value.is_a? Array
+    write_attribute(:steps, value)
+  end
+  
+  def ingredients= (value)
+    value = FoodRecipe.convertToArray(value) if !value.is_a? Array
+    write_attribute(:ingredients, value)
   end
 end

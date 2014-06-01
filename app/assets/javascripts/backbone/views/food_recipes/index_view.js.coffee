@@ -1,22 +1,12 @@
-class Recipe.Views.FoodRecipesIndexView extends Backbone.View
-
-  el: '#recipes'
+class Recipe.Views.FoodRecipesIndexView extends Backbone.Marionette.ItemView
 
   template: JST["backbone/templates/food_recipes/index"]
-  
-  events:
-    "submit .navbar-form" : "search"
 
-  initialize: ->
-      @render()
-      @load_recents()
-      # TODO: not alert, but create notifaction
-      if @options.msg
-        alert(@options.msg)
-
-  load_recents: ->
-      @options.recently_made.forEach(@addRecentlyMade, @)
-      @options.recently_added.forEach(@addRecentlyAdded, @)
+  onRender: ->
+    Recipe.recently_made.forEach(@addRecentlyMade, @) if Recipe.recently_made
+    Recipe.recently_added.forEach(@addRecentlyAdded, @) if Recipe.recently_added
+    if @options.msg
+      alert(@options.msg)
 
   addRecentlyAdded: (model) ->
       @view = new Recipe.Views.FoodRecipeRecentlyAddedView({model: model})
@@ -27,11 +17,3 @@ class Recipe.Views.FoodRecipesIndexView extends Backbone.View
       @div = jQuery(@view.render().el)
       @div.addClass('active') if i == 0
       @$el.find('#recently_made').append @div
-
-  search: ->
-    router.navigate('#search/' + jQuery(".navbar-form input[type=text]").val(), {trigger:true})
-    return false
-  
-  render: ->
-      @$el.html @template()
-      @

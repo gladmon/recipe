@@ -1,11 +1,6 @@
-class Recipe.Views.FoodRecipesShowView extends Backbone.View
-
-  el: '.main-content'
-
+class Recipe.Views.FoodRecipesShowView extends Backbone.Marionette.ItemView
   template: JST["backbone/templates/food_recipes/show"]
-
-  initialize: (options) ->
-      @render()
+  onRender: (options) ->
       @model.attributes.ingredients.forEach(@renderIngredientLi, @)
       @model.attributes.steps.forEach(@renderStepLi, @, '#step_list')
   
@@ -16,7 +11,3 @@ class Recipe.Views.FoodRecipesShowView extends Backbone.View
   renderStepLi: (item, parentList) ->
       @view = new Recipe.Views.FoodRecipeIngredientView({name: item})
       @$el.find('#step_list').append @view.render().el
-
-  render: ->
-      @$el.html(@template(@model))
-      @

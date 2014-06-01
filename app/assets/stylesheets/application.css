@@ -10,63 +10,16 @@
  *
  *= require_self
  *= require bootstrap
- *= require bootstrap-responsive
+ *= require bootstrap-theme
  *= require_tree .
  */
 
- h4 span {
-    color: #aaa;
-    font-style: italic;
-    font-size: .85em;
-    padding-left: 10px;
-	}
-  
-  .recent img {
-    max-height: 250px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  img {
-    max-height: 250px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .footer, .recent-added {
-    background-color: #fafafa;
-    padding: 10px;
-  }
-  
-  .recent-added {
-    margin-left: -10px;
-  }
-  
-  .welcome, .recent {
-    height: 330px;
-  }
-  
-  .welcome {
-    padding-top: 80px;
-  }
-  
-  .jcarousel {
-    position: relative;
-    overflow: hidden;
-    /* You need at least a height, adjust this to your needs */
-    height: 400px;
+ 
+ 
+textarea[name=description].form-control {
+  height: 108px;
 }
-
-.jcarousel ul {
-    width: 20000em;
-    position: absolute;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.jcarousel li {
-    float: left;
+ 
+textarea[name=steps].form-control,  textarea[name=ingredients].form-control {
+  height: 120px;
 }

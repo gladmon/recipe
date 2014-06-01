@@ -5,8 +5,11 @@ gem "mysql2", "~> 0.3.11"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'rails-backbone'
 gem 'libxml-ruby'
+
+group :dev_local do
+  gem 'sqlite3'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,6 +24,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'backbone-on-rails'
+gem 'marionette-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

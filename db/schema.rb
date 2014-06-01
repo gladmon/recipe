@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(:version => 20130210011953) do
     t.datetime "updated_at",      :null => false
   end
 
-  add_index "food_recipes", ["name", "description", "tag_line", "recipe_from", "ingredients", "steps"], :name => "name"
-
   create_table "users", :force => true do |t|
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
